@@ -1,0 +1,3 @@
+# October 16th
+
+Notes ...
