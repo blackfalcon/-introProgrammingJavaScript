@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>My First JavaScript</title>
+   <script>
+    // *********************************************
+    // **   Code Author:   Raymond Frenchmore
+    // **   Date: 10/10/2017
+    // **   Description: DESCRIPTION
+    // **
+    // **********************************************
+    // **   Change Log
+    // **   10/9/17 – Added header and changelog. Cliff Knopik
+    // **   10/10/17 - Added alert box that displays a welcome message with the user name. Raymond Frenchmore
+    // **   10/16/17 - Adds check for username entry; number value prompt and loop that writes back to the DOM
+    // **********************************************
+
+    // Put script here
+
+    // Ask user to set userName variable using default browser prompt function
+    const userName = prompt(`Please enter a User Name.`);
+
+    // Check to ensure that the user entered a value into the prompt
+    if (userName === null || userName === false || userName === '') {
+
+      // Write string to the DOM
+      document.write(`Sorry, you must enter a username to play.`)
+    } else {
+      // Alert user of successful user name entry
+      alert(`Welcome ${userName}, do you want to play a game?`);
+
+      // set variable for number of spaces
+      const numberValue = prompt(`Please enter a number of spaces, minimum of 5.`)
+
+      // check to ensure that value entered is 5 or greater
+      if (numberValue >= 5) {
+
+        // loop that will iterate over the value entered in the prompt
+        for (i = 0; i < numberValue; i++) {
+          document.write(`0`);
+        }
+      } else {
+
+        // alert user if they entered an invalid number
+        alert(`Sorry ${userName}, ${numberValue} was not high enough.`)
+      }
+    }
+
+   </script>
+</head>
+<body>
+
+</body>
+</html>

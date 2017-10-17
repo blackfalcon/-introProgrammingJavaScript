@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>Counter</title>
+</head>
+<body>
+  <script>
+    // Run for loop, while i is less than or equal to 100, increment by 5
+    for (i = 0; i <= 100; i += 5) {
+      document.write(`<p> ${i} </p>`)
+    }
+
+    // Extra effort
+    // Set prompt variables to prompt values
+    let total = parseInt(prompt('How high to count?'));
+    let incr = parseInt(prompt('What increment to count by'));
+
+    // // run loop based on prompt input values
+    for (i = 0; i <= total; i += incr) {
+      document.write(`<p> ${i} </p>`)
+    }
+
+    // Extra extra effort
+    // Set prompt variables to prompt values
+    let nextTotal = parseInt(prompt('How high to count?'));
+    let nextIncr = parseInt(prompt('What increment to count by'));
+
+    let mod = nextTotal % nextIncr;
+
+    let counter = -1;
+
+    for (i = 0; i <= nextTotal; i += nextIncr) {
+      counter += 1;
+      document.write(`<p>${counter} x ${nextIncr} = ${i}</p>`)
+    }
+
+    if (mod != 0) {
+      document.write(`<p>Oops, there is ${mod} left over of ${nextTotal}\n that can't be incremented by ${nextIncr}.</p>`)
+    } else {
+      document.write(`<p>SUCCESS! ${nextIncr} goes into ${nextTotal}, ${counter} times!</p>`)
+    }
+  </script>
+</body>
+</html>

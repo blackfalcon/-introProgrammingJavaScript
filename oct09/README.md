@@ -1,5 +1,26 @@
 # October 9th, 2017
 
+### Learning Objectives
+By the end of this lesson, students will be able to
+
+* identify variables, different kinds of values, and the var keyword
+* get code into a web page with the `<script>`
+* explain how JavaScript is different from HTML & CSS
+* identify statements and expressions
+* use the console and console.log, alert, and prompt
+* link to external scripts
+* identify common mistakes, good and bad variable names
+
+### Required Readings/Materials
+Chapter 1, Head First JavaScript Programming
+
+### Homework Assignments
+* Git Assignment  1 of 6
+* Project Part 1 of 7
+* Quiz 1
+
+### My Notes
+
 * [canvas.uw.edu](http://canvas.uw.edu)
 
 * Set up environment
