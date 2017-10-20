@@ -1,77 +1,116 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-	   <meta charset="utf-8">
-	   <title>Minesweeper!</title>
+  <head>
+     <meta charset="utf-8">
+     <title>Minesweeper!</title>
 
-	   <link rel="stylesheet" type="text/css" href="minesweeper.css">
-	</head>
-		<body>
+     <link rel="stylesheet" type="text/css" href="minesweeper.css">
+     <style>
+        body {
+          font-family: Helvetica, Arial, Sans-Serif;
+          color: #333333;
+        }
 
-			<script>
+        h2,
+        h4 {
+          padding: 5px;
+        }
 
-				// *********************************************
-				// **    Code Author:   Morgan Lang
-				// **    Date: 10/10/17
+        h2 {
+          font-size: 3em;
+        }
 
-				// **    Description: This script is designed to do the following:
-				// **     A. Prompt the user for their name using the prompt() method
-				// **     B. capture their name in a variable ("userName")
-				// **     C. greet them with their own name by invoking userName in an alert() and concatenating it with some string operators.
-				// **
-				// **********************************************
-				// **    Change Log
-				// **     10/09/17 – Added header and changelog. Cliff Knopik
-				// **     10/09/17 - Created html, js, and css. Morgan Lang
-				// **     10/10/17 - Copied in header and changelog, commented. Morgan Lang
-				// **	  10/18/17 - Add prompt for number of mine locations, and validation for both username and mine locations.  Marty Barnes
-				//
-				// **********************************************
+        h4 {
+          font-size: 1.7em;
+        }
+     </style>
+  </head>
+    <body>
 
-				//Initialize Variables
-				var numMines = 0;
+      <script>
 
-				//Loop username prompt while input is undefine, null, or empty
-				while (userName === undefined || userName === null || userName === "") {
+        // *********************************************
+        // **    Code Author:   Morgan Lang
+        // **    Date: 10/10/17
 
-					// ** Declaring the variable userName and storing the user's name in it using prompt():
-					var userName = prompt("Welcome to Minesweeper. What is your name?");
-				}
+        // **    Description: This script is designed to do the following:
+        // **     A. Prompt the user for their name using the prompt() method
+        // **     B. capture their name in a variable ("userName")
+        // **     C. greet them with their own name by invoking userName in an alert() and concatenating it with some string operators.
+        // **
+        // **********************************************
+        // **  Change Log
+        // **  10/09/17 – Added header and changelog. Cliff Knopik
+        // **  10/09/17 - Created html, js, and css. Morgan Lang
+        // **  10/10/17 - Copied in header and changelog, commented. Morgan Lang
+        // **  10/18/17 - Add prompt for number of mine locations, and validation for both username and mine locations.  Marty Barnes
+        // **  10/20/17 - Updating and commenting submitted code. Dale Sande
+        //
+        // **********************************************
 
-				// ** Concatenating the stored user name with some friendly strings in an alert().
-				var userAlert = alert("Hi, " + userName + "." + " " + "Good luck!");
+        //Initialize Variables
+        // var numMines = 0; // unnecessary to define variable in global scope
 
-				//Loop prompt for number of mine locations until value >= 5
-				while (numMines < 5) {
-					//&& (numMines !== null)) {
-					numMines = prompt("Please enter desired number of the mines.  Value can be no less than 5.");
+        //Loop userName prompt while input is true
+        while (true) { // no need to specify all the types of entries
 
-					//Alert user if value entered, is not a number and is not empty
-					if ((isNaN(numMines)) && (numMines !== null)) {
-					alert("Invalid entry");
-					numMines = 0;
-					}
-				}
-				//loop to write a "0", corresponding to the number of mines entered
-				for (var x=0; x<numMines;x++) {
-					document.write("0");
-					}
-		   </script>
+          // Declaring the variable userName and storing the user's name in it using prompt():
+          const userName = prompt(`Welcome to Minesweeper. What is your name?`);
+
+          // If userName var is set, then send response
+          if (userName){
+            // Alert user of successful user name entry
+            alert(`Hi, ${userName}. Good luck!`); // update string to use template literals
+            break;
+          }
+        }
+
+        // Concatenating the stored user name with some friendly strings in an alert().
+
+        // move this line inside the While loop
+        // Also, there is no need to assign an alert() to a variable
+        // var userAlert = alert("Hi, " + userName + "." + " " + "Good luck!");
+
+        //Loop prompt for number of mine locations until value >= 5
+        while (true) { // While loop just need to return true
+          const numMines = prompt("Please enter desired number of the mines.  Value can be no less than 5.");
+
+          //Alert user if value entered, is not a number and is not empty
+
+          // since we already know there is a true value, we don't need to test (isNaN(numMines)) && (numMines !== null)
+          // Also, numberValue needs to be greater than or equal to 5
+          if (numMines >= 5) {
+            for (var x = 0; x < numMines; x++) {
+              document.write("0");
+            }
+            break;
+          } else {
+            alert("Invalid entry");
+            // numMines = 0; // no need to reset value of numMines
+          }
+        }
+        //loop to write a "0", corresponding to the number of mines entered
+        // move the for loop inside the while loop to keep functionality encapsulated
+
+        // for (var x=0; x<numMines;x++) {
+        //   document.write("0");
+        //   }
+       </script>
 
 
-		<div id="MSTitle">
-			<h2>Minesweeper!</h2>
-		</div>
+    <div id="MSTitle">
+      <h2>Minesweeper!</h2>
+    </div>
 
-		<div id="MSDirections">
-		<h4>Click on the grid below, and try not to get blown up.</h4>
-		</div>
+    <div id="MSDirections">
+      <h4>Click on the grid below, and try not to get blown up.</h4>
+    </div>
 
 
-		<div id="MSGame">
-			<!--Assuming it will be helpful to put the game in a div eventually.-->
-		</div>
+    <div id="MSGame">
+      <!--Assuming it will be helpful to put the game in a div eventually.-->
+    </div>
 
-	</body>
+  </body>
 </html>
