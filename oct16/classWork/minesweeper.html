@@ -14,36 +14,44 @@
     // **   10/9/17 – Added header and changelog. Cliff Knopik
     // **   10/10/17 - Added alert box that displays a welcome message with the user name. Raymond Frenchmore
     // **   10/16/17 - Adds check for username entry; number value prompt and loop that writes back to the DOM
+    // **   10/20/17 - Updates functionality to ensure better data
     // **********************************************
 
     // Put script here
 
     // Ask user to set userName variable using default browser prompt function
-    const userName = prompt(`Please enter a User Name.`);
+    while(true) {
+      // Set value for Username
+      const userName = prompt("Please enter a User Name.");
 
-    // Check to ensure that the user entered a value into the prompt
-    if (userName === null || userName === false || userName === '') {
+      // If userName var is set, then send response
+      if (userName){
+        // Alert user of successful user name entry
+        alert(`Welcome ${userName}, do you want to play a game?`);
+        break;
 
-      // Write string to the DOM
-      document.write(`Sorry, you must enter a username to play.`)
-    } else {
-      // Alert user of successful user name entry
-      alert(`Welcome ${userName}, do you want to play a game?`);
+      // Else alert user of incorrect response and loop back to userName prompt
+      } else {
+        alert("Sorry, you must enter a User Name to play.");
+      }
+    }
 
-      // set variable for number of spaces
-      const numberValue = prompt(`Please enter a number of spaces, minimum of 5.`)
 
-      // check to ensure that value entered is 5 or greater
-      if (numberValue >= 5) {
+    // Ash user to enter a value for spaces used in game
+    while(true) {
+      // Set value for numberValue
+      const numberValue = prompt(`Please enter a number of spaces, minimum of 5.`);
 
-        // loop that will iterate over the value entered in the prompt
+      // If numberValue is equal or greater than 5, run loop to display number of 0s in UI
+      if (numberValue >= 5) {// loop that will iterate over the value entered in the prompt
         for (i = 0; i < numberValue; i++) {
           document.write(`0`);
         }
-      } else {
+        break;
 
-        // alert user if they entered an invalid number
-        alert(`Sorry ${userName}, ${numberValue} was not high enough.`)
+      // If number is less than 5, alert user of issue and loop back to prompt
+      } else {
+        alert("Sorry, you must enter a number minimum of 5.");
       }
     }
 
