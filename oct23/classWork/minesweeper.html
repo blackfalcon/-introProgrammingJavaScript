@@ -23,7 +23,8 @@
       }
     </style>
 
-    <script>
+      <script>
+
       // *********************************************
       // **    Code Author:   Morgan Lang
       // **    Date: 10/10/17
@@ -43,54 +44,37 @@
       //
       // **********************************************
 
-      //Initialize Variables
-      // var numMines = 0; // unnecessary to define variable in global scope
-
-      //Loop userName prompt while input is true
+      // Loop userName prompt while input is true
       while (true) { // no need to specify all the types of entries
 
         // Declaring the variable userName and storing the user's name in it using prompt():
         const userName = prompt(`Welcome to Minesweeper. What is your name?`);
 
         // If userName var is set, then send response
-        if (userName){
+        if (userName) {
           // Alert user of successful user name entry
-          alert(`Hi, ${userName}. Good luck!`); // update string to use template literals
+          alert(`Hi, ${userName}. Good luck!`);
           break;
         }
       }
 
-      // Concatenating the stored user name with some friendly strings in an alert().
+      // Loop numMines prompt while input is equal or greater than 5
+      while (true) {
+        const numMines = prompt(`Please enter desired number of the mines.  Value can be no less than 5.`);
 
-      // move this line inside the While loop
-      // Also, there is no need to assign an alert() to a variable
-      // var userAlert = alert("Hi, " + userName + "." + " " + "Good luck!");
-
-      //Loop prompt for number of mine locations until value >= 5
-      while (true) { // While loop just need to return true
-        const numMines = prompt("Please enter desired number of the mines.  Value can be no less than 5.");
-
-        //Alert user if value entered, is not a number and is not empty
-
-        // since we already know there is a true value, we don't need to test (isNaN(numMines)) && (numMines !== null)
-        // Also, numberValue needs to be greater than or equal to 5
+        // if value of numMines is equal or greater than 5, do loop of zeros
         if (numMines >= 5) {
-          for (var x = 0; x < numMines; x++) {
+          for (i = 0; i < numMines; i++) {
             document.write("0");
           }
           break;
         } else {
-          alert("Invalid entry");
-          // numMines = 0; // no need to reset value of numMines
+          //Alert user if value entered, is not a number and is not empty
+          alert(`Sorry, ${numMines} is an invalid entry.`);
         }
       }
-      //loop to write a "0", corresponding to the number of mines entered
-      // move the for loop inside the while loop to keep functionality encapsulated
+  </script>
 
-      // for (var x=0; x<numMines;x++) {
-      //   document.write("0");
-      //   }
-    </script>
 
   </head>
 
