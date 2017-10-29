@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>High Temp!</title>
+
+      <script>
+
+      // *********************************************
+      // **    Code Author:   Dale Sande
+      // **    Date: 10/29/17
+      // **********************************************
+      // **  Change Log
+      // **  10/29/17 – Find the high temp of the week
+      // **********************************************
+
+      // Assigned array of values for recorded weekly temps
+      const tempsForWeek = [];
+      tempsForWeek[0] = [56, 59, 63, 66, 67, 69, 70, 69, 65, 62, 59, 56]; // Monday
+      tempsForWeek[1] = [57, 59, 61, 64, 67, 69, 70, 71, 71, 69, 67, 64]; // Tuesday
+      tempsForWeek[2] = [58, 60, 62, 64, 66, 68, 69, 70, 70, 69, 62, 57]; // Wednesday
+      tempsForWeek[3] = [57, 56, 69, 62, 65, 66, 68, 68, 70, 69, 59, 52]; // Thursday
+      tempsForWeek[4] = [52, 59, 59, 63, 67, 70, 72, 73, 77, 74, 70, 65]; // Friday
+      tempsForWeek[5] = [60, 58, 62, 64, 69, 70, 74, 75, 77, 77, 74, 72]; // Saturday
+      tempsForWeek[6] = [63, 63, 64, 68, 71, 74, 75, 76, 77, 75, 74, 73]; // Sunday
+
+      // Loop through array to find the highest recorded temp per week(array)
+      const maxTemp = tempsForWeek.map(function(temp) {
+        return Math.max.apply(Math, temp);
+      });
+
+      console.log(maxTemp); // [70, 71, 70, 70, 77, 77, 77]
+
+      // Create an array of days of the week e.g. ["Monday", "Wednesday"] // that hit that high temperature
+      const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+      // Iterate through maxTemp array to find highest value and apply to maxHighTemp variable
+      const maxHighTemp = Math.max.apply(Math, maxTemp);
+      console.log(maxHighTemp); // 77
+
+      // Create new empty array for dailyHighTemp
+      const dailyHighTemp = []
+
+      // Manually iterate over maxTamp array comparing value of maxHighTemp
+      // When value is matched, push index value to new dailyHighTemp array.
+      for (i = 0; i < maxTemp.length; i++) {
+        if (maxTemp[i] === maxHighTemp) {
+          dailyHighTemp.push(daysOfWeek[i]);
+        }
+      }
+
+      // Your code here
+      document.write(dailyHighTemp);
+
+  </script>
+
+
+  </head>
+
+  <body>
+
+  </body>
+</html>
