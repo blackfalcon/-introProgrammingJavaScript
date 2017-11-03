@@ -1,4 +1,4 @@
-# October 23rd
+# October 30th
 
 ## Learning Objectives
 By the end of this lesson, students will be able to
