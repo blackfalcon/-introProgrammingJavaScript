@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+   <title>My First JavaScript</title>
+   <script>
+	// *********************************************
+	// **    Code Author:   Jeff Kanakares
+	// **    Date: 10/13/2017
+	// **    Description: Welcome Script
+	// **
+	// **********************************************
+	// **       Change Log
+	// **     10/9/17 – Added header and changelog. Cliff Knopik
+	// **	  10/12/17 - Added welcome script. Jeff Kanakares
+	// ** .   10/22/17 - Added lesson 2 Jeff Kanakares
+	// **********************************************
+
+	// Put script here
+
+	// Prompt for name.
+	var person = prompt("Please enter your name");
+
+	//	If person enters name, display welcome message.
+	if (person != null) {
+    	alert("Hello " + person + "! Welcome to JavaScript");
+	}
+
+	// Lesson 2
+	// initalize variable to 0
+	var width=0;
+
+	// prompt for number of locations that is greater than 5
+
+	while ((width < 5) && (width!==null)){
+
+		// assign prompt entry to width variable
+		width=prompt("Enter the number of locations. Must be at least 5");
+
+		// check to see if width is not a number
+		if ((isNaN(width)) && (width !== null)) {
+			// alert that an invalid entry was entered
+			alert("Invalid entry");
+
+			// reset width to 0 to continue the while loop prompt
+			width=0;
+		}
+
+	}
+
+	// if width not null print out the 0's
+
+	var width = prompt("Enter the number of colums, Must be at least 5");
+	var height = "0";
+
+	var minesweeper = new Array(width);
+
+		if (width !== null){
+			for (var x=0;x<width.length;x++){
+				document.write("0","<br>");
+		    	  for (i = 0; i < width; i = i + 1) {
+					minesweeper[i] = new Array(height);
+						document.write("0");
+		}}
+	}
+</script>
+</head>
+<body>
+<p>The HTML goes here</p>
+
+
+</body></html>
