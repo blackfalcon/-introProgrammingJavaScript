@@ -78,12 +78,12 @@
           const character = '0';
 
           // 1st loop that will create the height of the grid
-          for(var h = 0; h <= numMines; h++) {
+          for(var h = 0; h < numMines; h++) {
             // Set empty string variable for each newColumn in the grid
             let newColumn = '';
 
             // 2nd loop that will create the width of the grid
-            for (var w = 0; w <= numMines; w++){
+            for (var w = 0; w < numMines; w++){
 
               // Create string of HTML that will be used in the DOM to create the individual table cells
               let tableCell = `<td class="mine">${character}</td>`;
