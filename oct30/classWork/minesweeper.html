@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>Minesweeper!</title>
 
-    <link rel="stylesheet" type="text/css" href="minesweeper.css">
     <style>
       table {
         border-collapse: collapse;
@@ -28,6 +27,7 @@
     </style>
   </head>
     <body>
+      <h1 id="username"></h1>
       <table>
         <tbody id="minefield"></tbody>
       </table>
@@ -51,59 +51,74 @@
       // **  10/30/17 - ADds functionality to display width and height of grid. Dale Sande
       // **********************************************
 
-      // Loop userName prompt while input is true
-      while (true) { // no need to specify all the types of entries
+      // Set global var to populate value later on
+      let userName = '';
 
-        // Declaring the variable userName and storing the user's name in it using prompt():
-        const userName = prompt(`Welcome to Minesweeper. What is your name?`);
-
-        // If userName var is set, then send response
-        if (userName) {
-          // Alert user of successful user name entry
-          alert(`Hi, ${userName}. Good luck!`);
-          break;
+      // Function for building our DOM structure for the mine fields
+      function mineBuilder(argValue) {
+        // Create variable for empty array
+        const tableRows = [];
+        // Placeholder variable for content of grid
+        const character = '0';
+        // 1st loop that will create the height of the grid
+        for(var h = 0; h < argValue; h++) {
+          // Set empty string variable for each newColumn in the grid
+          let newColumn = '';
+          // 2nd loop that will create the width of the grid
+          for (var w = 0; w < argValue; w++){
+            // Create string of HTML that will be used in the DOM to create the individual table cells
+            let tableCell = `<td class="mine">${character}</td>`;
+            // Populate the newColumn variable with each iteration of the loop
+            newColumn += tableCell;
+          };
+          // Populate the tableRows array
+          tableRows.push(`<tr>${newColumn}</tr>`);
         }
-      }
+        // Display contents of tableRows array to DOM
+        document.getElementById('minefield').innerHTML += tableRows.join('');
+      };
+
+      // Function for printing the user name into the DOM
+      function printName(name) {
+        const nameElement = document.getElementById('username');
+
+        nameElement.innerHTML = `Hello ${name}! Good luck!`;
+      };
+
+
+      // Self executing function for user prompt
+      (function userPrompt(){
+        // Loop userName prompt while input is true
+        while (true) { // no need to specify all the types of entries
+          // Declaring the variable userName and storing the user's name in it using prompt():
+          userName = prompt(`Welcome to Minesweeper. What is your name?`);
+          // If userName var is set, then send response
+          if (userName) {
+            // Alert user of successful user name entry
+            alert(`Hi, ${userName}. Good luck!`);
+            break;
+          }
+        }
+        // Return the value of userName to the global scope
+        return userName;
+      })();
 
       // Loop numMines prompt while input is equal or greater than 5
       while (true) {
         const numMines = prompt(`Please enter desired number of the mines.  Value can be no less than 5.`);
-
         // if value of numMines is equal or greater than 5, do loop of zeros
         if (numMines >= 5) {
-          // Create variable for empty array
-          const tableRows = [];
-
-          // Placeholder variable for content of grid
-          const character = '0';
-
-          // 1st loop that will create the height of the grid
-          for(var h = 0; h <= numMines; h++) {
-            // Set empty string variable for each newColumn in the grid
-            let newColumn = '';
-
-            // 2nd loop that will create the width of the grid
-            for (var w = 0; w <= numMines; w++){
-
-              // Create string of HTML that will be used in the DOM to create the individual table cells
-              let tableCell = `<td class="mine">${character}</td>`;
-
-              // Populate the newColumn variable with each iteration of the loop
-              newColumn += tableCell;
-            };
-
-            // Populate the tableRows array
-            tableRows.push(`<tr>${newColumn}</tr>`);
-          }
-
-          // Display contents of tableRows array to DOM
-          document.getElementById('minefield').innerHTML += tableRows.join('');
+          mineBuilder(numMines);
           break;
         } else {
           //Alert user if value entered, is not a number and is not empty
           alert(`Sorry, ${numMines} is an invalid entry.`);
         }
       }
+
+      // Call function to print name in the DOM
+      printName(userName);
+
     </script>
   </body>
 </html>
