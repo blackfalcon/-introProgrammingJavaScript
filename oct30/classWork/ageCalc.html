@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Calculate age in seconds</title>
+
+    <script>
+
+      // *********************************************
+      // **    Code Author:   Dale Sande
+      // **    Date: 11/3/17
+      // **********************************************
+      // **  Change Log
+      // **  11/3/17 – Build age calc app. Dale Sande
+      // **********************************************
+
+      function mathMaker(valueOne, valueTwo) {
+        return valueOne - valueTwo;
+      }
+
+      function calDateSeconds () {
+        // alert the user as to the date format needed
+        alert('Please enter a date. Use MM/DD/YYYY format.')
+
+        // prompts to get data from user
+        const month = prompt('Please enter a Month') - 1; // to adjust for 0 month array
+        const day = prompt('Please enter a Date');
+        const year = prompt('Please enter a Year');
+
+        // Populate new date object with provided info
+        const enteredDate = new Date(year, month, day);
+
+        // Create new date object for today's date
+        const newDate = new Date();
+
+        // Javascript will return difference between dates in milliseconds
+        // Calculate the difference between the two objects and divide by 1000 to get SECONDS
+        const difference = (mathMaker(newDate, enteredDate) / 1000);
+
+        // Round up difference value and update to formatted string
+        const newValue = Math.ceil(difference).toLocaleString();
+
+        // Get the year from the enteredDate object
+        const enteredYear = enteredDate.getFullYear();
+        // Get the year from the newDate object
+        const thisYear = newDate.getFullYear();
+        // Calculate how many years since enteredYear
+        const howManyYears = mathMaker(thisYear, enteredYear);
+
+        // Returned formatted string with calculated values
+        return `It's been ${howManyYears} years, or ${newValue} seconds, since ${month + 1}/${day}/${year}.`;
+      };
+
+      // Set output value to myDiff variable
+      let myDiff = calDateSeconds();
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript is REALLY GOOD at math!</h1>
+
+    <p id="output"></p>
+
+    <script>
+      // Find ID element in the DOM
+      const nameElement = document.getElementById('output');
+
+      // Render value of myDiff to DOM
+      nameElement.innerHTML = myDiff;
+    </script>
+  </body>
+</html>
