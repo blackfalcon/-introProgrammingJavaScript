@@ -25,11 +25,3 @@ By the end of this lesson, students will be able to
 * Optional:
   * Assignment 5-EC1 (optional): Get input values from the user and update the page.
   * Assignment 5-EC2 (Optional): Email Validation
-
-### Chapter 6
-
-
-### Chapter 7
-
-
-### Chapter 8
