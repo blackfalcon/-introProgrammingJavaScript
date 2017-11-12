@@ -20,6 +20,10 @@ By the end of this lesson, students will be able to
 * Project Part 3 of 7
 * Quiz 3
 
+
+### Array.prototype
+The Array prototype has a slew of methods associated to it, [read all here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype)
+
 ### Notes
 
 * APIs = programmableweb.com

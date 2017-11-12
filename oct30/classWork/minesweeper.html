@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Minesweeper!</title>
+
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      td {
+        background-color: orange;
+        border: 4px solid white;
+        padding: 10px 15px;
+        text-align: center;
+        line-height: 1;
+        color: white;
+        font-weight: bold;
+      }
+      .mine:hover {
+        background-color: white;
+        color: orange;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+    <body>
+      <h1 id="username"></h1>
+      <table>
+        <tbody id="minefield"></tbody>
+      </table>
+      <script>
+      // *********************************************
+      // **    Code Author:   Morgan Lang
+      // **    Date: 10/10/17
+
+      // **    Description: This script is designed to do the following:
+      // **     A. Prompt the user for their name using the prompt() method
+      // **     B. capture their name in a variable ("userName")
+      // **     C. greet them with their own name by invoking userName in an alert() and concatenating it with some string operators.
+      // **
+      // **********************************************
+      // **  Change Log
+      // **  10/09/17 – Added header and changelog. Cliff Knopik
+      // **  10/09/17 - Created html, js, and css. Morgan Lang
+      // **  10/10/17 - Copied in header and changelog, commented. Morgan Lang
+      // **  10/18/17 - Add prompt for number of mine locations, and validation for both username and mine locations.  Marty Barnes
+      // **  10/20/17 - Updating and commenting submitted code. Dale Sande
+      // **  10/30/17 - Adds functionality to display width and height of grid. Dale Sande
+      // **********************************************
+
+      // Set global var to populate value later on
+      let userName = '';
+
+      // Function for building our DOM structure for the mine fields
+      function mineBuilder(argValue) {
+        // Create variable for empty array
+        const tableRows = [];
+        // Placeholder variable for content of grid
+        const character = '0';
+        // 1st loop that will create the height of the grid
+        for(var h = 0; h < argValue; h++) {
+          // Set empty string variable for each newColumn in the grid
+          let newColumn = '';
+          // 2nd loop that will create the width of the grid
+          for (var w = 0; w < argValue; w++){
+            // Create string of HTML that will be used in the DOM to create the individual table cells
+            let tableCell = `<td class="mine">${character}</td>`;
+            // Populate the newColumn variable with each iteration of the loop
+            newColumn += tableCell;
+          };
+          // Populate the tableRows array
+          tableRows.push(`<tr>${newColumn}</tr>`);
+        }
+        // Display contents of tableRows array to DOM
+        document.getElementById('minefield').innerHTML += tableRows.join('');
+      };
+
+      // Function for printing the user name into the DOM
+      function printName(name) {
+        const nameElement = document.getElementById('username');
+
+        nameElement.innerHTML = `Hello ${name}! Good luck!`;
+      };
+
+
+      // Self executing function for user prompt
+      (function userPrompt(){
+        // Loop userName prompt while input is true
+        while (true) { // no need to specify all the types of entries
+          // Declaring the variable userName and storing the user's name in it using prompt():
+          userName = prompt(`Welcome to Minesweeper. What is your name?`);
+          // If userName var is set, then send response
+          if (userName) {
+            // Alert user of successful user name entry
+            alert(`Hi, ${userName}. Good luck!`);
+            break;
+          }
+        }
+        // Return the value of userName to the global scope
+        return userName;
+      })();
+
+      // Loop numMines prompt while input is equal or greater than 5
+      while (true) {
+        const numMines = prompt(`Please enter desired number of the mines.  Value can be no less than 5.`);
+        // if value of numMines is equal or greater than 5, do loop of zeros
+        if (numMines >= 5) {
+          mineBuilder(numMines);
+          break;
+        } else {
+          //Alert user if value entered, is not a number and is not empty
+          alert(`Sorry, ${numMines} is an invalid entry.`);
+        }
+      }
+
+      // Call function to print name in the DOM
+      printName(userName);
+
+    </script>
+  </body>
+</html>

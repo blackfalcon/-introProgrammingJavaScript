@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+      <!--
+        *********************************************
+        **    Code Author:   Dale Sande
+        **    Date: 11/12/17
+
+        **    JavaScript and the DOM
+        *********************************************
+      -->
+
+    <style>
+      .main-header {
+        color: blue;
+      }
+
+      .body-copy {
+        color: green;
+      }
+
+      .container {
+        color: red;
+      }
+    </style>
+    <script>
+      // wrapping all functionality inside onload statement
+      window.onload = function() {
+
+        // set variables to be used
+        const mainHeader = document.getElementById('main-header');
+        const bodyCopy = document.getElementById('body-copy');
+        const container = document.getElementById('container');
+
+        // function for updating the DOM elements with CSS classes
+        (function paintUi() {
+          mainHeader.classList.add('main-header');
+          bodyCopy.classList.add('body-copy');
+          container.classList.add('container');
+        })();
+
+        // function to find element w/o alt tag and apply generic alt attribute content
+        (function altTag() {
+          const imageBox = document.querySelectorAll('.picture');
+
+          // loop through array of returned DOM elements
+          for (i = 0; i < imageBox.length; i++) {
+            let hasAltAttr = imageBox[i].hasAttribute('alt');
+            let attrStr = imageBox[i].getAttribute('alt');
+
+            // if alt attr does not exist or contains an empty string, set atty with new string
+            if (!hasAltAttr || attrStr === '') {
+              imageBox[i].setAttribute('alt', 'this is generic alt Attr text.')
+            }
+          }
+
+          // function to copy text from DOM and display in browser alert dialog
+          (function alertText() {
+            let someCopy = container.innerHTML;
+
+            // wrap alert in timeout async function as to allow for CSS updates prior to
+            // opening alert dialog box
+            setTimeout(function(){
+              alert(someCopy);
+            }, 1000);
+          })();
+        })();
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <h1 id="main-header">This is a header</h1>
+    <p id="body-copy">This is a paragraph.</p>
+    <div id="container">This is a div section. </div>
+
+    <img class="picture" alt="this is a fpo image" src="http://fpoimg.com/300x250?text=Preview" />
+    <img class="picture" alt="" src="http://fpoimg.com/300x250?text=Preview" />
+    <img class="picture" src="http://fpoimg.com/300x250?text=Preview" />
+    <img class="picture" alt="this is a fpo image" src="http://fpoimg.com/300x250?text=Preview" />
+  </body>
+</html>

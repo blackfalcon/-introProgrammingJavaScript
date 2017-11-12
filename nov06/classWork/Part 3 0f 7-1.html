@@ -1,0 +1,71 @@
+<html lang="en"><head>
+   <meta charset="utf-8">
+   <title>Project Part 1 of 7</title>
+    <script>
+   // *********************************************
+   // **    Code Author:   Yan De Wulf
+   // **    Date: 10/15/2017
+   // **    Description: prompts user’s name, & a width #
+   // **    and display as many rows & column for width #
+   // **    provdided.
+   // **
+   // **********************************************
+   // **       Change Log
+   // **     10/21/2017 – added WIDTH # promting section - Yan De Wulf
+   // **     10/28/2017 – added Array creation & printing section - Yan De Wulf
+   // **     11/1/2017 – created new function, called minefield - Joanna Rooney
+   // **********************************************
+/////////////////////////
+// Name promting section
+/////////////////////////
+      var username;
+// ask user to provide name
+      username = prompt("Your name?");
+// while loop keeps prompting for name until user provides a value
+      while(username.length < 1 === true) {
+         alert("Please provide a name.");
+         username = prompt("Your name?");
+    };
+// display name provided by user
+        alert("Your name is: " + username);
+/////////////////////////
+// WIDTH promting section
+/////////////////////////
+// ask user to provide width
+//             width = prompt("How wide should your minefield be? \(not larger than 5 please\)");
+// while loop checks user provides a number value, smaller than 6
+      var width;
+      while (isNaN(width)==true || width > 5 || width.length < 1) {
+        alert("Please provide a number not greater than 5.");
+             width = prompt("How wide?");
+    };
+
+/////////////////////////
+// Create array section
+/////////////////////////
+// creat array of zeros as many as width number
+//Created new function, minefield
+
+      var minefield_array = [];
+      function minefield() {
+          for (count = 0; count <= (width - 1); count = count + 1) {
+               minefield_array.push(0);
+          }
+      }
+      minefield();
+/////////////////////////
+// Print out array section
+/////////////////////////
+//  print out array in a row & as many rows as length of array
+      for (count1 = 0; count1 <minefield_array.length;)  {
+           count1++
+          for (count2 = 0; count2 < minefield_array.length; count2++) {
+              document.write(minefield_array[count2]);
+          };
+           document.write("<br >");
+    };
+    </script>
+   <body>
+   <script src="scripts.js"></script>
+   </body>
+</html>
